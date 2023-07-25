@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TaskManage.Models.TaskTable>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Task_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task_Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsComplete)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Task_Dedline)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsComplete)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Task_Dedline)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Task_Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Task_Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Task_Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
